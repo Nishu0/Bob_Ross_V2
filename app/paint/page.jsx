@@ -1,12 +1,17 @@
 "use client"
 import React, { useState, useRef } from 'react';
-import YouTubePlayer from '../../components/Youtube';
+import Navbar from '../../components/Navbar';
+import YouTubePlayer from '../../components/YouTube';
 import CanvasComponent from '../../components/Canvas';
 import ColorsWrapper from '../../components/Colours';
+import YouTubeURLInput from '../../components/URL';
+
+import '../../styles/globals.css';
 
 const Paint = () => {
   const [color, setColor] = useState('lightBlue');
   const [penSize, setPenSize] = useState(5);
+  const [videoURL, setVideoURL] = useState('');
   const canvasRef = useRef(null);
 
   const selectColor = (col) => {
@@ -32,9 +37,13 @@ const Paint = () => {
     setColor(col);
   };
 
+  const handleYouTubeVideo = (url) => {
+    setVideoURL(url);
+  };
+
   return (
     <div>
-      <h1 className="title">Paint using js</h1>
+      <Navbar /> 
       <main id="wrapper">
         {/* Colors wrapper */}
         <ColorsWrapper
@@ -48,15 +57,18 @@ const Paint = () => {
           canvasRef={canvasRef} // Pass the canvasRef to ColorsWrapper
         />
 
+        {/* YouTube URL Input */}
+
         {/* YouTube player and Canvas */}
         <div className="youtube-and-canvas-wrapper">
           <div className="youtube-wrapper">
-            <YouTubePlayer />
+            <YouTubePlayer videoURL={videoURL} />
           </div>
           <div className="canvas-wrapper">
             <CanvasComponent ref={canvasRef} width={640} height={360} color={color} penSize={penSize} />
           </div>
         </div>
+        <YouTubeURLInput onURLSubmit={handleYouTubeVideo} />
       </main>
     </div>
   );
