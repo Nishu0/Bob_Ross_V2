@@ -58,17 +58,20 @@ const Paint = () => {
         />
 
         {/* YouTube URL Input */}
-
+        
         {/* YouTube player and Canvas */}
         <div className="youtube-and-canvas-wrapper">
-          <div className="youtube-wrapper">
-            <YouTubePlayer videoURL={videoURL} />
-          </div>
+          {videoURL ? (
+            <div className="youtube-wrapper">
+              <YouTubePlayer videoURL={videoURL} />
+            </div>
+          ) : null}
           <div className="canvas-wrapper">
             <CanvasComponent ref={canvasRef} width={640} height={360} color={color} penSize={penSize} />
           </div>
         </div>
         <YouTubeURLInput onURLSubmit={handleYouTubeVideo} />
+
       </main>
     </div>
   );

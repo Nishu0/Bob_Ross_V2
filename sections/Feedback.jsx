@@ -26,9 +26,7 @@ const Feedback = () => (
           </p>
         </div>
         <p className="mt-[24px] font-normal sm:text-[24px] text-[18px] sm:leading-[45px] leading-[39px] text-white">
-          “With the development of today's technology, metaverse is very useful
-          for today's work, or can be called web 3.0. by using metaverse you can
-          use it as anything”
+          “Bob Ross V2 was born out of pure artistic inspiration! We couldn't resist the magic of Bob Ross, the legendary painter! Just like Bob enchanted us with "The Joy of Painting" on his iconic TV show, we wanted to spread that same joy and creativity to the digital world! 🌈🖌️”
         </p>
       </motion.div>
       <motion.div

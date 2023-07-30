@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 import styles from '../styles';
 import { navVariants } from '../utils/motion';
@@ -21,14 +22,21 @@ const Navbar = () => (
         alt="search"
         className="w-[24px] h-[24px] object-contain"
       />
-      <h2 className="font-extrabold text-[24px] leading-[30.24px] text-white">
-        Bob Ross V2
-      </h2>
+      <Link href="/" className="font-extrabold text-[24px] leading-[30.24px] text-white rounded focus:outline-none focus:ring focus:border-blue-300">
+            Bob Ross V2
+        </Link>
+      <Link href="/paint" className="font-extrabold text-[24px] leading-[30.24px] text-white rounded focus:outline-none focus:ring focus:border-blue-300">
+            Paint
+        </Link>
+        <Link href="/aipaint" className="font-extrabold text-[24px] leading-[30.24px] text-white rounded focus:outline-none focus:ring focus:border-blue-300">
+            AI Image
+        </Link>
       <img
         src="/menu.svg"
         alt="menu"
         className="w-[24px] h-[24px] object-contain"
       />
+      
     </div>
   </motion.nav>
 );
