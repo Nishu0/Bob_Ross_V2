@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, useRef } from 'react';
 import Navbar from '../../components/Navbar';
-import YouTubePlayer from '../../components/YouTube';
+import YouTubePlayer from '../../components/Youtube';
 import CanvasComponent from '../../components/Canvas';
 import ColorsWrapper from '../../components/Colours';
 import YouTubeURLInput from '../../components/URL';
