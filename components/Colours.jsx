@@ -1,13 +1,14 @@
 import React from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEraser, faTrash, faDownload } from '@fortawesome/free-solid-svg-icons';
 
-const ColorsWrapper = ({ selectColor, eraser, clearCanvas, penSizeChanging, pickedColorChange, color, penSize }) => {
+
+
+const ColorsWrapper = ({ selectColor, eraser, clearCanvas, penSizeChanging, pickedColorChange, color, penSize, canvasRef }) => {
   const downloadCanvas = () => {
-    const canvas = document.querySelector('#canvas'); // Get the canvas element
-    const image = canvas.toDataURL('image/png'); // Convert the canvas content to a data URL
-    const link = document.createElement('a'); // Create a link element
-    link.download = 'paint.png'; // Set the download attribute with the desired filename
-    link.href = image; // Set the data URL as the link's href
-    link.click(); // Programmatically trigger the download
+    if (canvasRef.current) {
+      canvasRef.current.downloadCanvas();
+    }
   };
 
   return (
@@ -24,14 +25,14 @@ const ColorsWrapper = ({ selectColor, eraser, clearCanvas, penSizeChanging, pick
         {/* Eraser */}
         <li>
           <button onClick={eraser}>
-            <i className="fa-solid fa-eraser"></i>
+          <FontAwesomeIcon icon={faEraser} />
           </button>
         </li>
 
         {/* Clear canvas */}
         <li>
           <button onClick={clearCanvas}>
-            <i className="fa-solid fa-trash"></i>
+          <FontAwesomeIcon icon={faTrash} />
           </button>
         </li>
 
@@ -50,7 +51,8 @@ const ColorsWrapper = ({ selectColor, eraser, clearCanvas, penSizeChanging, pick
         {/* Download art */}
         <li>
           <button onClick={downloadCanvas}>
-            <i className="fa-solid fa-download fa-lg"></i>
+            Download
+            <FontAwesomeIcon icon={faDownload} />
           </button>
         </li>
       </ul>

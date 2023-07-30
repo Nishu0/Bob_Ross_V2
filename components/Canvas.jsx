@@ -1,15 +1,17 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 const CanvasComponent = React.forwardRef((props, ref) => {
   const canvasRef = useRef(null);
   const { width, height, color, penSize } = props;
-  const [ctx, setCtx] = React.useState(null);
-  const [painting, setPainting] = React.useState(false);
+  const [ctx, setCtx] = useState(null);
+  const [isCtxReady, setIsCtxReady] = useState(false);
+  const [painting, setPainting] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const context = canvas.getContext('2d');
     setCtx(context);
+    setIsCtxReady(true);
   }, []);
 
   function start(e) {
@@ -39,16 +41,20 @@ const CanvasComponent = React.forwardRef((props, ref) => {
   }
 
   const clearCanvas = () => {
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    if (isCtxReady) {
+      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    }
   };
 
   const downloadCanvas = () => {
-    const canvas = canvasRef.current;
-    const image = canvas.toDataURL('image/png');
-    const link = document.createElement('a');
-    link.download = 'canvas_image.png';
-    link.href = image;
-    link.click();
+    if (isCtxReady) {
+      const canvas = canvasRef.current;
+      const image = canvas.toDataURL('image/png');
+      const link = document.createElement('a');
+      link.download = 'canvas_image.png';
+      link.href = image;
+      link.click();
+    }
   };
 
   return (
@@ -59,6 +65,7 @@ const CanvasComponent = React.forwardRef((props, ref) => {
           if (ref) {
             ref.current = {
               clearCanvas: clearCanvas,
+              downloadCanvas: downloadCanvas,
             };
           }
         }}

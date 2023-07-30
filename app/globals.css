@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Add this CSS to your existing styles */
 body {
   width: 100%;
   height: 98vh;
@@ -37,24 +36,27 @@ body {
   max-height: 360px; /* Adjust this value based on your preference */
 }
 
-.youtube-wrapper {
+.youtube-and-canvas-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px; /* Add space at the bottom */
+}
+
+.youtube-wrapper,
+.canvas-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px; /* Add margin to separate from colors wrapper */
+  margin-right: 20px; /* Add space between YouTube player and canvas */
 }
+
 
 .colors-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.canvas-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-bottom: 20px;
 }
 
 #wrapper {
@@ -182,25 +184,14 @@ h3 {
     height: auto; /* Allow the container to adjust its height based on content */
   }
 
+  .youtube-and-canvas-wrapper {
+    flex-direction: column;
+  }
+
   #youtube-player,
   #canvas {
     width: 100%; /* Take up the full width on smaller screens */
     max-width: none; /* Remove the maximum width for responsive behavior */
     height: 300px; /* Adjust the height as needed for smaller screens */
   }
-}
-
-.download-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
-.download-button i {
-  color: black; /* Set the color for the download icon */
-}
-
-.download-button:hover i {
-  color: white; /* Set the color for the download icon on hover */
 }
